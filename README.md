@@ -15,8 +15,9 @@
 ---------------------------
 
 - 딥러닝 챗봇 모델 만들기
-- Bootstrap으로 챗봇 화면 구성
-- Flask로 웹 서버 구현
+- ~~Bootstrap으로 챗봇 화면 구성~~
+- (프론트엔드) html,css,javascript
+- (백엔드) Flask로 웹 서버 구현
 
 ----------
 
@@ -29,8 +30,13 @@ env : ``py-study``
 - 현재 구현 완료
   - 로그인, 로그아웃
   - 계정 생성 (정보입력: 이메일, 비밀번호, 연령대, 성별)
+  - 챗봇 인터페이스
 - To do
-  - seq2seq 모델 weights 파일 h5로 저장
   - 서버에 모델 올리기 + weights load
-  - Bootstrap으로 챗봇 화면 구성
-  - Flask로 웹 서버 구현
+  - 챗봇과 대화할 수 있도록 모델이랑 연결해서 기능 구현
+
+-------------------
+
+[System Configuration]
+
+![AIproject_model-System Configuration.drawio](README.assets/AIproject_model-System Configuration.drawio.png)
