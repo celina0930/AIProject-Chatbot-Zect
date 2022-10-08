@@ -1,3 +1,7 @@
+---
+
+---
+
 ~~연구 진행 방향 수정됨~~
 
 - ~~기존 공개데이터셋의 구성 방안을 분석하여 텍스트 데이터 활용 감정 분류 모델을 보다 구체적이고 세부적으로 설계하는 것이 필요함~~
@@ -39,4 +43,4 @@ env : ``py-study``
 
 [System Configuration]
 
-![AIproject_model-System Configuration.drawio](README.assets/AIproject_model-System Configuration.drawio.png)
+![system configuration](static/images/AIproject_model-System Configuration.drawio.png)
