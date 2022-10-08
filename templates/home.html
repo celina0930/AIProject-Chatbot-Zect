@@ -1,0 +1,62 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="card-wrapper" xmlns="http://www.w3.org/1999/html">
+
+        <div class="card">
+
+            <h1 class="center">계정 생성</h1>
+
+            <form name="signup_form">
+
+                <label for="email">Email</label>
+                <input type="text" autocomplete="off" name="email" class="field" required>
+
+                <label for="password">Password</label>
+                <input type="password" autocomplete="off" name="password" class="field" required>
+
+                <label for="age">Age</label>
+                <select name="age">
+                    <option value="">연령대선택</option>
+                    <option value="10대">10대</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대">50대</option>
+                </select>
+                </br>
+                </br>
+                <label for="gender">Gender</label>
+                <select name="gender">
+                    <option value="">성별 선택</option>
+                    <option value="남자">남자</option>
+                    <option value="여자">여자</option>
+                </select>
+
+                <p class="error error--hidden"></p>
+
+                <input type="submit" value="Sign Up" class="btn">
+            </form>
+
+        </div>
+
+        <div class="card">
+
+            <h1 class="center">로그인</h1>
+
+            <form name="login_form">
+
+                <label for="email">Email</label>
+                <input type="text" autocomplete="off" name="email" class="field" required>
+
+                <label for="password">Password</label>
+                <input type="password" autocomplete="off" name="password" class="field" required>
+
+                <p class="error error--hidden"></p>
+
+                <input type="submit" value="Log In" class="btn">
+
+            </form>
+        </div>
+    </div> 
+{%endblock%}

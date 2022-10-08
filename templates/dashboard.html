@@ -1,0 +1,75 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+</head>
+<body>
+
+<div class="card-wrapper">
+
+    <div class="card">
+
+        <h1 class="center">Dashboard</h1>
+        <p class="center">현재 로그인 상태입니다.</p>
+
+        <div class="center">
+            <a href="/user/signout" class="btn btn--secondary">로그아웃</a>
+        </div>
+
+    </div>
+
+<div class="card">
+
+        <h1 class="center">User Information</h1>
+
+        <p>
+            <strong>Email:</strong> {{ session['user']['email']}}<br>
+            <strong>Age:</strong> {{ session['user']['age']}}<br>
+            <strong>Gender:</strong> {{ session['user']['gender']}}
+        </p>
+
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/96/bmo.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chatbot Active!</h4>
+                    <p class="chatbox__description--header">안녕하세요! 저는 Zect에요! <br>오늘 하루는 어떠셨나요?</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" /></button>
+        </div>
+    </div>
+</div>
+
+    <script>
+        $SCRIPT_ROOT = {{ request.script_root|tojson }};
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
+
+
+{%endblock%}
