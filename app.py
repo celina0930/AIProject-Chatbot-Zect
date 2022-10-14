@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, session, request, jsonify
-from chat import get_response
+from models.chat import get_response
 from functools import wraps
 import pymongo
 
