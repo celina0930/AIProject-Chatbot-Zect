@@ -1,6 +1,6 @@
 from models.train import *
 
-SAVE_FILE_NM = "saved_model/18-1.75531.h5"
+SAVE_FILE_NM = "models/saved_model/18-1.75531.h5"
 model.load_weights(SAVE_FILE_NM)
 print(model.evaluate([index_inputs, index_outputs], index_targets))
 

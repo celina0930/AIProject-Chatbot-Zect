@@ -1,12 +1,9 @@
-import numpy as np
-import os
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tensorflow.python.client import device_lib
-import matplotlib.pyplot as plt
 
-from preprocess import *
+from models.preprocess import *
 
 
 device_lib.list_local_devices()
@@ -15,8 +12,8 @@ SEED_NUM = 2022
 tf.random.set_seed(SEED_NUM)
 np.random.seed(SEED_NUM)
 
-DATA_IN_PATH = './data_in/'
-DATA_OUT_PATH = './saved_model/'
+DATA_IN_PATH = './models/data_in/'
+DATA_OUT_PATH = './models/saved_model/'
 TRAIN_INPUTS = 'train_inputs.npy'
 TRAIN_OUTPUTS = 'train_outputs.npy'
 TRAIN_TARGETS = 'train_targets.npy'
