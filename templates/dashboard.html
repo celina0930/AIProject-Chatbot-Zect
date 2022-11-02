@@ -38,6 +38,20 @@
 </div>
 
 <div class="card-wrapper">
+
+   <div class="card">
+
+        <h1 class="center">{{ session['user']['nickname']}}님, <br><br> 오늘 하루 어떠셨어요? 😊 </h1>
+        <form id="textForm">
+        <input type="text" autocomplete="off" id="user_say" name="user_say" class="field">
+        <div id="response_text"></div>
+
+</form>
+
+    </div>
+</div>
+
+<div class="card-wrapper">
     <div class="chatbox">
         <div class="chatbox__support">
             <div class="chatbox__header">
@@ -67,6 +81,20 @@
         $SCRIPT_ROOT = {{ request.script_root|tojson }};
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+    <script>
+        myform  =  document.querySelector("#textForm");
+        myform.addEventListener("submit", textFormSubmit);
+
+        function textFormSubmit(event){
+            event.preventDefault()
+            message_txt = $("#user_say").val()
+            $.post("http://168.131.155.77:5001//predict-emotion", {"user_say": message_txt }, function(data){
+                 responseHtml = "<p> {{ session['user']['nickname']}}님, 지금 기분이 <strong>"+data+"</strong> 이신가 봐요. <br>챗봇과 대화 어떠세요? </p>"
+                $('#response_text').html(responseHtml)
+            });
+    }
+    </script>
 
 </body>
 </html>

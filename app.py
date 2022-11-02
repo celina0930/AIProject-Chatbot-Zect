@@ -33,6 +33,8 @@ def home():
 def dashboard():
     return render_template('dashboard.html')
 
+#To do : Predict user's emotion
+
 @app.post("/predict")
 def predict():
     text = request.get_json().get("message")
