@@ -83,6 +83,7 @@ def guess_emotion(sentence):
     #     load_model = TFGPT2Classifier(dir_path='./gpt_ckpt', num_class=6)
     #     load_model.load_weights('model_weights_output_gpt2/02-0.96427.ckpt')
     #     load_model.compile(optimizer=optimizer, loss=loss, metrics=[metric])
+
     predicted_emotion = load_model.predict(test_data_sents)
     # print(predicted_emotion)
     emotion = np.argmax(predicted_emotion, axis=1)

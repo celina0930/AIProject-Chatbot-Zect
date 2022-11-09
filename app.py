@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, session, request, jsonify
-from models.chat import get_response
+#from models.chat import get_response
 from functools import wraps
 import pymongo
 
@@ -35,12 +35,12 @@ def dashboard():
 
 #To do : Predict user's emotion
 
-@app.post("/predict")
-def predict():
-    text = request.get_json().get("message")
-    #TODO:check if text is valid
-    response = get_response(text)
-    message = {"answer" : response}
-    return jsonify(message)
+# @app.post("/predict")
+# def predict():
+#     text = request.get_json().get("message")
+#     #TODO:check if text is valid
+#     response = get_response(text)
+#     message = {"answer" : response}
+#     return jsonify(message)
 
 

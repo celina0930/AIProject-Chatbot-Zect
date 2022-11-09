@@ -1,15 +1,14 @@
 import os
 import re
-import json
 
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from konlpy.tag import Okt
+from konlpy.tag import Mecab
 
 
-FILTERS = "([~.,!?\"':;)(])"
+#FILTERS = "([~.,!?\"':;)(])"
 PAD = "<PAD>"
 STD = "<SOS>"
 END = "<END>"
@@ -21,9 +20,9 @@ END_INDEX = 2
 UNK_INDEX = 3
 
 MARKER = [PAD, STD, END, UNK]
-CHANGE_FILTER = re.compile(FILTERS)
-
-MAX_SEQUENCE = 25
+#CHANGE_FILTER = re.compile(FILTERS)
+#mecab = Mecab('C:/mecab/mecab-ko-dic')
+MAX_SEQUENCE = 32
 
 
 def load_data(path):
@@ -42,7 +41,7 @@ def data_tokenizer(data):
         # FILTERS = "([~.,!?\"':;)(])"
         # 위 필터와 같은 값들을 정규화 표현식을
         # 통해서 모두 "" 으로 변환 해주는 부분이다.
-        sentence = re.sub(CHANGE_FILTER, "", sentence)
+        sentence = re.sub(r"([?.!,])", r" \1 ", sentence)
         for word in sentence.split():
             words.append(word)
     # 토그나이징과 정규표현식을 통해 만들어진
@@ -51,7 +50,7 @@ def data_tokenizer(data):
 
 
 def prepro_like_morphlized(data):
-    morph_analyzer = Okt()
+    morph_analyzer = Mecab('C:/mecab/mecab-ko-dic')
     result_data = list()
     for seq in tqdm(data):
         morphlized_seq = " ".join(morph_analyzer.morphs(seq.replace(' ', '')))
@@ -147,7 +146,7 @@ def enc_processing(value, dictionary, tokenize_as_morph=False):
         # FILTERS = "([~.,!?\"':;)(])"
         # 정규화를 사용하여 필터에 들어 있는
         # 값들을 "" 으로 치환 한다.
-        sequence = re.sub(CHANGE_FILTER, "", sequence)
+        sequence = re.sub(r"([?.!,])", r" \1 ", sequence)
         # 하나의 문장을 인코딩 할때
         # 가지고 있기 위한 배열이다.
         sequence_index = []
@@ -196,7 +195,7 @@ def dec_output_processing(value, dictionary, tokenize_as_morph=False):
         # FILTERS = "([~.,!?\"':;)(])"
         # 정규화를 사용하여 필터에 들어 있는
         # 값들을 "" 으로 치환 한다.
-        sequence = re.sub(CHANGE_FILTER, "", sequence)
+        sequence = re.sub(r"([?.!,])", r" \1 ", sequence)
         # 하나의 문장을 디코딩 할때 가지고
         # 있기 위한 배열이다.
         sequence_index = []
@@ -235,7 +234,7 @@ def dec_target_processing(value, dictionary, tokenize_as_morph=False):
         # FILTERS = "([~.,!?\"':;)(])"
         # 정규화를 사용하여 필터에 들어 있는
         # 값들을 "" 으로 치환 한다.
-        sequence = re.sub(CHANGE_FILTER, "", sequence)
+        sequence = re.sub(r"([?.!,])", r" \1 ", sequence)
         # 문장에서 스페이스 단위별로 단어를 가져와서
         # 딕셔너리의 값인 인덱스를 넣어 준다.
         # 디코딩 출력의 마지막에 END를 넣어 준다.
